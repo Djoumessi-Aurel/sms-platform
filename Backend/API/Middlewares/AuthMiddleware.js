@@ -23,6 +23,6 @@ module.exports.checkUser = (req, res, next) => {
 	
 		next()
 	  } catch (error) {
-		console.log(error)
+		console.log(error.name, error.message)
 	  }
 }
