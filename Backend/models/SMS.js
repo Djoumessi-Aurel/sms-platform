@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const paginate = require('mongoose-paginate-v2')
 
 const SMSSchema = new mongoose.Schema({
     content: {
@@ -15,5 +16,7 @@ const SMSSchema = new mongoose.Schema({
 }, { 
     timestamps: true
     })
+
+SMSSchema.plugin(paginate)
 
 module.exports = mongoose.model('SMS', SMSSchema)
