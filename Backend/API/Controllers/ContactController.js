@@ -3,8 +3,9 @@ const User = require('../../models/User')
 
 // get all contacts
 const getAll = (req, res)=>{
-    let options = { pagination: false, populate: 'owner'}
-    if(req.query.page && req.query.limit) options = {page: req.query.page, limit: req.query.limit, populate: 'owner'}
+    let options = { pagination: false}
+    if(req.query.page && req.query.limit) options = {page: req.query.page, limit: req.query.limit}
+    options.populate = 'owner'
 
     Contact.paginate({}, options)
     .then((response)=>{

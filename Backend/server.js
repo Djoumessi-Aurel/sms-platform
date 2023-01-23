@@ -9,7 +9,7 @@ const cors = require('cors');
 
 // Configuring environment variables
 dotenv.config({
-    path : "./config/.env"
+    path : "./API/config/.env"
 })
 
 // Importing routes
@@ -19,7 +19,6 @@ const ContactRoute = require('./API/Routes/contact')
 
 // Connexion to the database
 const DBURL = process.env.DBURL || 'mongodb://localhost:27017/sms-platform'
-
 mongoose.set('strictQuery', true)
 
 mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true})
