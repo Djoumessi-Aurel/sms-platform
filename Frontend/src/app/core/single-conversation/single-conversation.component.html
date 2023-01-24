@@ -1,0 +1,29 @@
+<div class="conversation p-3 shadow-lg">
+    <div class="conversation-header p-2">
+        <a routerLink="/core/conversations"><i class="fa fw fa-arrow-left"></i></a>
+        <div class=" photo-name ">
+            <img src="../../../assets/images/profile.png" alt="{{nomContact}} photo" width="50px" height="50px"/>
+            <div>{{nomContact}}</div>
+        </div>
+        
+    </div>
+    <div class="conversation-body px-2">
+        <app-message *ngFor="let msg of messages"
+                             [message] = "msg"></app-message>
+    </div>
+    <div class="conversation-footer mt-5 ml-lg-5 ml-sm-1">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="">
+            <div class="left ">
+                <textarea class="form-control" name="message" id="message"  ngModel placeholder="Type a message..." required> </textarea>
+            </div>
+            <div class="right ml-3">
+                <button type="submit" 
+            class="btn btn--outline-primary"
+            [ngClass]="{'btn--disabled':f.invalid}"
+            >Send</button>
+            </div>
+            
+        </form>
+    </div>
+
+</div>

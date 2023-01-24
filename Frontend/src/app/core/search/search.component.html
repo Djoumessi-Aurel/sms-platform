@@ -1,0 +1,41 @@
+<section class="pt-3 px-5 shadow-lg">
+    <div class="row title">
+        <div class="col mb-3 text-center">
+            <h3>Search</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col ">
+            <form class="form mt-3" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <input class="form-control mr-1" type="search" placeholder="Search contact or message" aria-label="Search" name="searchText" ngModel required >
+                <select name="category" class="ml-2 mr-2" ngModel >
+                    <option value="" disabled>Category</option>
+                    <option *ngFor="let choice of choices" [ngValue]="choice.value">{{choice.content}}</option>
+                </select> 
+                <button class="btn btn--outline-primary " type="submit"><i class="fa fw fa-search" [ngClass]="{'disabled':f.invalid}"></i></button>
+            </form>
+            
+            
+        </div>  
+    </div>
+    <div class="row mt-5">
+        <div class="col col-lg-8">
+            <p>Results search</p>
+        </div>
+    </div>
+    <div class="row mt-1 page">
+        <a role="button" routerLink="" class="btn btn--sm btn--secondary">Previous page</a>
+        <a role="button" routerLink="" class="btn btn--sm btn--secondary">Next page</a>
+    </div>
+    <div class="row mt-2">
+        <div class="col col-lg-8" *ngIf="isContact">
+            <app-result-list-item-contact *ngFor="let contact of contacts" [name]="contact.name" [number]="contact.number"></app-result-list-item-contact>
+            
+        </div>
+        <div class="col col-lg-8" *ngIf="!isContact">
+            <app-result-list-item-message *ngFor="let message of messages" [content]="message.content" [hour]="message.hour"></app-result-list-item-message>
+        </div>
+    </div>
+    
+    
+</section>

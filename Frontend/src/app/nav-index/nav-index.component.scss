@@ -1,0 +1,118 @@
+@import "../../styles.scss";
+
+@media screen and (max-width: 800px) {
+    .hidden-sm{
+      display: none;
+    }
+    .dropdown{
+        position: relative;
+    }
+    .nav{
+        .nav--right .dropdown-menu.menu{
+            position: relative;
+            margin-right: 5.1em;
+            a{
+                text-align: center;
+            }
+        }
+    }   
+}
+@media screen and (min-width:800px){
+    .nav--right.hidden-lg{
+        display: none ;
+    }
+    
+}
+.active-link{
+    &::after{
+        display: block;
+        content: " ";
+        border-bottom: 2px solid white !important;
+    }
+    
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(45deg, $c-secondary, $c-primary );
+    justify-content: space-between;
+    height: 5em;
+    font-size: 1em;
+    position: relative;
+    &--right{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-right: 1em;
+        .dropdown-menu.menu{
+            position: relative;
+            margin-right: 2em;
+        }
+        a:hover{
+            background-color: transparent;
+        }
+        
+    }
+    a{
+        text-align: center;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        &:not(.active-link){
+            &.fromleft{
+                &::after{
+                    display: block;
+                    content: " ";
+                    
+                    border-bottom: 2px solid white;
+                    transform: scaleX(0);
+                    transition: transform  250ms ease-in-out;
+                    transform-origin: 0% 50%;
+        
+                }
+                &:hover {
+                    &::after{
+                        transform: scaleX(1);
+                        
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    
+    .nav--right .dropdown-menu {
+        background-color: $c-primary;
+        a{
+            text-align: center;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            &.fromleft{
+                &::after{
+                    display: block;
+                    content: " ";
+                    border-bottom: 2px solid white;
+                    transform: scaleX(0);
+                    transition: transform  250ms ease-in-out;
+                    transform-origin: 0% 50%;
+        
+                }
+                &:hover{
+                    background-color: $c-primary;
+                    &::after{
+                        transform: scaleX(1);
+                        
+                    }
+                }
+            }
+
+        }
+    }
+    
+  }

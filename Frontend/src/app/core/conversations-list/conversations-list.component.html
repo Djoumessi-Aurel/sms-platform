@@ -1,0 +1,8 @@
+
+<div *ngFor="let conv of conversations; let i = index"
+        (click)="onViewConv(i)" class="conversation"> 
+        <app-conversations-list-item 
+        [nomContact]="conv.nom"
+        [lastMessage]="conv.message"
+          ></app-conversations-list-item>
+</div>

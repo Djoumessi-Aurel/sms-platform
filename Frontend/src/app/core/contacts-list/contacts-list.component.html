@@ -1,0 +1,4 @@
+<app-contacts-list-item *ngFor="let contact of contacts; let i = index"
+                        [id]="i"
+                        [number]="contact.number"
+                        [name]="contact.name"></app-contacts-list-item>

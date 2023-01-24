@@ -1,0 +1,22 @@
+<nav class="nav " >
+    <a class="navbar-brand">
+        <img src='../../../assets/images/logosms.png' width="50" height="50" alt="Logo du site" />
+        <span class="hidden-sm">SendIt</span>   
+    </a>
+    <a class="nav-link fromleft" routerLinkActive="active-link" routerLink="/core/contacts"><i class="fa fa-fw fa-address-book"></i> <span class="hidden-sm">Contacts</span></a>
+    <a class="nav-link fromleft" routerLinkActive="active-link" routerLink="/core/search"><i class="fa fa-fw fa-search"></i> <span class="hidden-sm">Search</span></a>
+    <a class="nav-link fromleft" routerLinkActive="active-link" routerLink="/core/conversations"><i class="fa fa-fw fa-comments"></i><span class="hidden-sm">Conversations</span></a>
+    <div class="nav--right">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"><i class="fas fa-plus-circle"></i><span class="hidden-sm">More</span></a>
+            <div class="dropdown-menu menu">
+              <a class="dropdown-item fromleft" routerLink="/core/settings"><i class="fa fa-fw fa-cog"></i> Settings</a>
+              <a class="dropdown-item fromleft" role="button" (click)="onSignOut()" href="#"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+            </div>
+      </div>
+        
+     
+       
+    </div>
+    
+</nav>

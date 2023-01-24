@@ -1,0 +1,152 @@
+/* You can add global styles to this file, and also import other style files */
+$c-primary: rgb(25, 118, 210);
+$c-secondary: rgb(197, 53, 79);
+$c-paleBlue: rgb(227, 230, 237);
+$paddingBtn : 0.39em;
+$radiusBtn: 0.3em;
+$radiusBtnLg: 0.5em;
+/* Fonts */
+.bg{
+    &--primary{
+        background-color: $c-primary;
+    }
+    &--secondary{
+        background-color: $c-secondary;
+    }
+}
+
+.primary{
+    color: $c-primary;
+}
+.secondary{
+    color: $c-secondary;
+}
+
+/* Buttons */
+.btn{
+    
+    &--primary{
+        background: $c-primary;
+        color: white;
+        padding: $paddingBtn;
+        border-radius: $radiusBtn;
+        border: 1px solid $c-primary ;
+        transition: transform 100ms ease-in-out;
+        &:hover{
+            transform: scale(1.1);
+        }
+        
+    }
+    &--secondary{
+        background: $c-secondary;
+        color: white;
+        padding: $paddingBtn;
+        border-radius: $radiusBtn;
+        border: 1px solid $c-secondary ;
+        transition: transform 100ms ease-in-out;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    &.btn--lg{
+        width: 15em;
+        height: 5em;
+        padding-top: 2em;
+        border-radius: $radiusBtnLg;
+    }
+    &.btn--md{
+        width: 10em;
+        height: 3.5em;
+        padding-top: 1em;
+        border-radius: $radiusBtn;
+    }
+    &.btn--straight{
+        border-radius: 0px;
+    }
+    &--outline-primary{
+        border-radius: $radiusBtn;
+        background: white;
+        color: $c-primary;
+        padding: $paddingBtn;
+        border: 2px solid $c-primary ;
+        transition: transform 100ms ease-in-out;
+        &.btn--disabled{
+            border: 2px solid $c-paleBlue;
+            &:hover{
+                border: 2px solid $c-paleBlue;
+                background: $c-paleBlue;
+                color: $c-primary;
+            }
+        }
+        &:hover{
+            background-color: $c-primary;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+    }
+    &--outline-secondary{
+        border-radius: $radiusBtn;
+        background: white;
+        color: $c-secondary;
+        padding: $paddingBtn;
+        border: 2px solid $c-secondary ;
+        transition: transform 100ms ease-in-out;
+        &.btn--disabled{
+            border: 2px solid $c-paleBlue;
+            &:hover{
+                border: 2px solid $c-paleBlue;
+                background: $c-paleBlue;
+                color: $c-secondary;
+            }
+        }
+        &:hover{
+            background-color: $c-secondary;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+    }
+    &--disabled{
+        background: $c-paleBlue;
+    }
+
+}
+body{
+    font-family: 'calibri','trebuchet ms', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}
+a{
+    &.primary{
+        color: $c-primary;
+        text-decoration: none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    &.secondary{
+        color: $c-secondary;
+        text-decoration: none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .hidden-sm{
+      display: none;
+    } 
+}
+@media screen and (max-width: 1149px) {
+    .hidden-md{
+      display: none;
+    } 
+}
+@media screen and (min-width: 1149px) {
+    .appear-md{
+      display: none;
+    } 
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

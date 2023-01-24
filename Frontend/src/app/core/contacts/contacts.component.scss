@@ -1,0 +1,15 @@
+@import "../../../styles.scss";
+section{
+    h3{
+        
+        text-decoration: underline;
+    }   
+}
+.newContactForm{
+    border: 1px solid $c-primary;
+    .submit{
+        display: flex;
+        justify-content: end;
+    }
+}
+

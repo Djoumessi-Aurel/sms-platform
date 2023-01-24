@@ -1,0 +1,27 @@
+@import "../../../styles.scss";
+section{
+    h3{
+        
+        text-decoration: underline;
+    }   
+}
+.newContactForm{
+    border: 1px solid $c-primary;
+    .submit{
+        display: flex;
+        justify-content: end;
+    }
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.page{
+    display: flex;
+    justify-content: space-between;
+}

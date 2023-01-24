@@ -1,0 +1,36 @@
+<div class=" my-2 px-3 py-3 contact">
+    <div class="contact-content  mr-2">
+        <div class=""> <img src="../../../assets/images/profile.png" alt="{{name}} photo" width="50px" height="50px"/></div>
+        <div>
+            <a class="primary " data-toggle="collapse" href="#contact_{{id}}" role="button" aria-expanded="false" attr.aria-controls="contact_{{id}}" > {{name}}</a>
+            <div class="small "><a class="primary " data-toggle="collapse" href="#contact_{{id}}" role="button" aria-expanded="false" attr.aria-controls="contact_{{id}}" >{{number}}</a></div>
+        </div>
+        
+    </div>
+    <div class="collapse mt-2" id="contact_{{id}}">
+        <div class="my-1"> <button class=" btn--outline-secondary">Write a message</button></div>
+        <div class="my-1"> <a  class="btn btn--outline-secondary " data-toggle="collapse" href="#contactForm_{{id}}" aria-expanded="false" attr.aria-controls="contactForm_{{id}}">Modify the contact</a></div>
+        <div class=" newContactForm p-3 collapse  mt-1" id="contactForm_{{id}}">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" name="name" ngModel required>
+                </div>
+                <div class="form-group">
+                    <label for="number">Phone number</label>
+                    <input type="text" id="number" class="form-control" name="number" ngModel required>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" class="" name="photo" ngModel >
+                </div>
+                <div class="submit ">
+                    <button type="submit" class="btn btn-outline-info" 
+                            [ngClass]="{'disabled':f.invalid}"> Modify </button>
+                </div>
+
+            </form>
+         </div> 
+        <div class="my-1"> <button  class=" btn--outline-secondary ">Delete the contact</button></div>
+     </div> 
+</div>

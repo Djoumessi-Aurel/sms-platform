@@ -1,0 +1,44 @@
+<section class="pt-3 px-5 shadow-lg">
+    <div class="row title">
+        <div class="col mb-3 text-center">
+            <h3>Contacts</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="my-1">
+                <button class=" btn--outline-primary"  data-toggle="collapse" href="#newContactForm" aria-expanded="false" attr.aria-controls="newContactForm"><i class=" fa fw fa-plus-circle"></i> New contact</button>
+            </div>
+        </div>
+    </div>
+    <div class="row collapse " id="newContactForm">
+        <div class="col-lg-6 col">
+            <div class=" newContactForm p-3  mt-1" >
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" name="name" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <label for="number">Phone number</label>
+                        <input type="text" id="number" class="form-control" name="number" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Photo</label>
+                        <input type="file" id="photo" class="" name="photo" ngModel >
+                    </div>
+                    <div class="submit ">
+                        <button type="submit" class="btn btn-outline-success" 
+                                [ngClass]="{'disabled':f.invalid}"> Add </button>
+                    </div>
+
+                </form>
+             </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-contacts-list></app-contacts-list>
+        </div>
+    </div>
+</section>

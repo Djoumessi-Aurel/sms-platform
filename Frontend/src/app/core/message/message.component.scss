@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+
+.message{
+    border: 1px solid $c-primary;
+    border-radius: 1em 1em 0em 1em;
+    color: white;
+    background: linear-gradient(45deg, $c-secondary, $c-primary);
+    text-align: justify;
+    word-wrap:break-word;
+    
+}
