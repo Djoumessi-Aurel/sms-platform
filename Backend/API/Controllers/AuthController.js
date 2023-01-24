@@ -1,8 +1,6 @@
 const User = require('../../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.EMAIL_SENDING_API_KEY);
 const nodeoutlook = require('nodejs-nodemailer-outlook')
 
 const secret = process.env.MY_SECRET
@@ -137,24 +135,5 @@ async function sendMail(receiver, content){
   })
 }
 
-// function sendMail(receiver, content){
-//   let msg = {
-//     to: receiver,
-//     from: 'testprogweb12@gmail.com', // Use the email address or domain you verified above
-//     subject: 'Reset password',
-//     text: content,
-//     html: '<br><strong>and easy to do anywhere, even with Node.js</strong>',
-//   }
-  
-//   sgMail
-//   .send(msg)
-//   .then((response) => {console.log('Email envoyé.', response)}, error => {
-//     console.error(error);
-
-//     if (error.response) {
-//       console.error(error.response.body)
-//     }
-//   })
-// }
 
 module.exports = {login, register, forgotPassword, beforeResetPassword, resetPassword}
