@@ -17,6 +17,10 @@ export class ContactService {
     this.contactSubject.next(this.contacts.slice());
   }
 
+  numberOfContats(){
+    return this.contacts.length
+  }
+
   refreshContacts() {
     
     return new Promise((resolve, reject)=>{
@@ -46,6 +50,20 @@ export class ContactService {
                 })
     })
     //this.refreshContacts()
+  }
+
+  addManyContacts(contactsArray: any[]) {
+    
+    return new Promise((resolve, reject)=>{
+      axios.post(this.authService.backendUrl + '/contact/createMany', {contactsArray})
+                .then((response)=>{
+                    this.refreshContacts();
+                    resolve('Importing contacts: OK')
+                })
+                .catch((error)=>{
+                    reject(error.response)
+                })
+    })
   }
 
   deleteContact(id: string){

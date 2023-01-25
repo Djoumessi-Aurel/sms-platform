@@ -13,3 +13,14 @@ section{
     }
 }
 
+input[type="file"]{
+    display: none;
+}
+
+span.import{
+    cursor: pointer;
+}
+
+label.import:hover{
+    transform: scale(1.1);
+}

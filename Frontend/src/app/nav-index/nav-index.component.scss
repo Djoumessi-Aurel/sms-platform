@@ -89,6 +89,7 @@
     
     .nav--right .dropdown-menu {
         background-color: $c-primary;
+        background-color: #fff;
         a{
             text-align: center;
             padding: 12px;
@@ -106,7 +107,7 @@
         
                 }
                 &:hover{
-                    background-color: $c-primary;
+                    background-color: rgb(247, 247, 247);
                     &::after{
                         transform: scaleX(1);
                         

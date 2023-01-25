@@ -62,6 +62,8 @@ export class SignupComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    if(this.authService.isAuth) this.router.navigate(['/core']);
+    
     this.initForm();
   }
   

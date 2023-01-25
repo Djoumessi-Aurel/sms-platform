@@ -47,6 +47,7 @@ import { ResultListItemContactComponent } from './result-list-item-contact/resul
     CoreRoutingModule,
     FormsModule
   ],
+  exports: [NavComponent],
   providers: [ContactService, SearchService]
 })
 export class CoreModule { }

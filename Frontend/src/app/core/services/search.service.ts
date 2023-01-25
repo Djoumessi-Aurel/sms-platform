@@ -8,7 +8,7 @@ import {Message} from '../../models/message.models';
 export class SearchService {
 
   constructor() { }
-  contacts:Contact[] = [new Contact('654454354','John DOE', "../../../assets/images/profile.png")];;
+  contacts:Contact[] = [new Contact('654454354','John DOE', "../../../assets/images/profile.jpeg")];;
   messages:Message[] = [new Message('Hey', {hours:14,minutes:47}, new Date())] 
   getContacts():Contact[]{
     return this.contacts;

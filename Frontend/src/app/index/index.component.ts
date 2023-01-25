@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  isAuth: boolean = false
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.isAuth = this.authService.isAuth
   }
 
 }

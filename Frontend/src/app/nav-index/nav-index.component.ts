@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-nav-index',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavIndexComponent implements OnInit {
 
-  constructor() { }
+  isAuth: boolean = false
+  currentUser: any
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isAuth = this.authService.isAuth
+    this.currentUser = this.authService.currentUser
+  }
+
+  onSignOut(): void {
+    this.authService.signOut()
+    this.router.navigate(['/auth/signin'])
   }
 
 }

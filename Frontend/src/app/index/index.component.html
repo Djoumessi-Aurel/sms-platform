@@ -4,7 +4,8 @@
     <h1 class="jumbo-title">Welcome to LE NJOH ! </h1>
     <br/>
     <p class="text-center mb-5" ></p> 
-    <a role="button" routerLink="/auth/signin" class="btn btn--md btn--primary">Get Started</a>  
+    <a role="button" *ngIf="!isAuth" routerLink="/auth/signin" class="btn btn--md btn--primary">Get Started</a>  
+    <a role="button" *ngIf="isAuth" routerLink="/core" class="btn btn--md btn--primary">Get Started</a>
   </div>
 </section>
 <div class="container">

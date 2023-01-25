@@ -48,6 +48,19 @@ const create = async (req, res)=>{
     }
 }
 
+// create many contacts
+const createMany = async (req, res)=>{
+    try {
+    const {contactsArray} = req.body
+    
+    let response = await Contact.create(contactsArray)
+    res.status(200).json({message: 'Contacts successfully created', content: response})
+
+    } catch (error) {
+    res.status(401).json({message: 'An error occured.', content: error.message})
+    }
+}
+
 // update a contact
 const update = async (req, res)=>{
     try {
@@ -78,4 +91,4 @@ const destroy = async (req, res)=>{
     }
 }
 
-module.exports = {getAll, getSomeones, create, update, destroy}
+module.exports = {getAll, getSomeones, create, createMany, update, destroy}
