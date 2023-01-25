@@ -9,7 +9,7 @@
     }
 }
 .bg--overlay {
-    background: linear-gradient(rgba(25, 118, 210,0.5),rgba(197, 53, 79,0.5)), url("../../assets/images/person3.jpg");
+    background:url("../../assets/images/prof.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -27,9 +27,10 @@
 .bg-transparent{
     .jumbo-title{
         color: white;
+        
     }
 }
-   
+
 .interrogation{
     font-size: 4.5em;
     color: $c-primary;
@@ -110,8 +111,8 @@ h2{
     }
     .card-img-top{
         text-align: center;
-        height: 225px;
-        width: 225px;
+        height: 100px;
+        width: 100px;
     }
     
 }

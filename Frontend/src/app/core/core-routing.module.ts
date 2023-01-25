@@ -20,7 +20,7 @@ const routes: Routes = [
           {path:'', component:ConversationsComponent},
           {path:':id', component:SingleConversationComponent}] 
       },
-      {path:'settings', component: SettingsComponent}
+      {path:'infos', component: SettingsComponent}
     ]
   } 
   

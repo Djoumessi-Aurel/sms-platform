@@ -29,7 +29,7 @@
     </div>
     <div class="row mt-2">
         <div class="col col-lg-8" *ngIf="isContact">
-            <app-result-list-item-contact *ngFor="let contact of contacts" [name]="contact.name" [number]="contact.number"></app-result-list-item-contact>
+            <app-result-list-item-contact *ngFor="let contact of contacts" [name]="contact.name" [number]="contact.phone"></app-result-list-item-contact>
             
         </div>
         <div class="col col-lg-8" *ngIf="!isContact">

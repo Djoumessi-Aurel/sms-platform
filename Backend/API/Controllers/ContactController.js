@@ -3,7 +3,7 @@ const User = require('../../models/User')
 
 // get all contacts
 const getAll = (req, res)=>{
-    let options = { pagination: false}
+    let options = { pagination: false, sort: {name: 1}}
     if(req.query.page && req.query.limit) options = {page: req.query.page, limit: req.query.limit}
     options.populate = 'owner'
 
@@ -22,7 +22,7 @@ const getSomeones = async (req, res)=>{
     let user = await User.findOne({email: req.params.userEmail})
     if(!user) throw new Error(`User with email ${req.params.userEmail} does not exist`)
 
-    let options = { pagination: false, }
+    let options = { pagination: false, sort: {name: 1}}
     if(req.query.page && req.query.limit) options = {page: req.query.page, limit: req.query.limit}
     
     let response = await Contact.paginate({owner: user._id}, options)
@@ -66,4 +66,16 @@ const update = async (req, res)=>{
     }
 }
 
-module.exports = {getAll, getSomeones, create, update}
+// delete a contact
+const destroy = async (req, res)=>{
+    try {
+    const {contactId} = req.params
+    let response = await Contact.findByIdAndDelete(contactId)
+    res.status(200).json({message: 'Contact successfully deleted', content: response})
+
+    } catch (error) {
+    res.status(401).json({message: 'An error occured.', content: error.message})
+    }
+}
+
+module.exports = {getAll, getSomeones, create, update, destroy}

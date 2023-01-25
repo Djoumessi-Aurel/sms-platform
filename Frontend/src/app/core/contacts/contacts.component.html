@@ -10,26 +10,32 @@
                 <button class=" btn--outline-primary"  data-toggle="collapse" href="#newContactForm" aria-expanded="false" attr.aria-controls="newContactForm"><i class=" fa fw fa-plus-circle"></i> New contact</button>
             </div>
         </div>
+        <div class="search-bar">
+            <form>
+                <input type="text" required>
+                <button>
+                    <i class="fa fa-fw fa-search"></i>
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="row collapse " id="newContactForm">
+    <div class="modal-box row collapse"  id="newContactForm">
         <div class="col-lg-6 col">
-            <div class=" newContactForm p-3  mt-1" >
+            <div class=" newContactForm   mt-1 box" >
+                <div class="off" data-toggle="collapse" href="#newContactForm">X</div>
                 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" name="name" ngModel required>
+                        <input type="text" id="name" class="form-control" name="name" ngModel required style="background: #f2f2f2; " >
                     </div>
                     <div class="form-group">
-                        <label for="number">Phone number</label>
-                        <input type="text" id="number" class="form-control" name="number" ngModel required>
+                        <label for="phone">Phone number</label>
+                        <input type="text" id="phone" class="form-control" name="phone" style="background: #f2f2f2; " ngModel required>
                     </div>
-                    <div class="form-group">
-                        <label for="photo">Photo</label>
-                        <input type="file" id="photo" class="" name="photo" ngModel >
-                    </div>
+                    
                     <div class="submit ">
-                        <button type="submit" class="btn btn-outline-success" 
-                                [ngClass]="{'disabled':f.invalid}"> Add </button>
+                        <button type="submit" class="modal-button btn btn-outline-success" 
+                                [ngClass]="{'disabled':f.invalid}" data-toggle="collapse" href="#newContactForm"> Add </button>
                     </div>
 
                 </form>
@@ -38,7 +44,10 @@
     </div>
     <div class="row">
         <div class="col">
+            
             <app-contacts-list></app-contacts-list>
         </div>
     </div>
+   
 </section>
+

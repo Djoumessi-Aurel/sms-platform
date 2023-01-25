@@ -21,6 +21,91 @@ $radiusBtnLg: 0.5em;
 .secondary{
     color: $c-secondary;
 }
+.modal-box{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    transition: .3s;
+}
+.modal-button{
+    color: white;
+    background-color: #1976d2;
+    border-color: transparent;
+    width: 90px;
+    opacity: 1;
+}
+.box{
+    padding: 2rem;
+    position: relative;
+    background: white;
+    width: 500px;
+    margin: auto;
+    transition: .3s;
+}
+.off{
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    transform: rotate(90deg);
+    font-family: cursive;
+    color: #1976d2;
+    cursor: pointer;
+}
+.contact-content{
+    position: relative;
+}
+.contact-i{
+    position: absolute;
+    right: 5px;
+}
+.contact-i i{
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18pw;
+    transition: .2s;
+}
+.contact-i a{
+    color: #000000;
+}
+.contact-i i:hover{
+    transform: scale(1.5);
+    color: #1976d2;
+}
+.delete{
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+.search-bar{
+    padding-right: 17px;
+    margin: 6px 0;
+}
+.search-bar input{
+    height: 39px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid #85898c;
+    padding: 0 15px;
+    width: 145px;
+    outline: none;
+}
+.search-bar button{
+    border: none;
+    background: #1976d2;
+    height: 39px;
+    color: white;
+    padding: 0 15px 0 12px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
 
 /* Buttons */
 .btn{
@@ -65,8 +150,8 @@ $radiusBtnLg: 0.5em;
     }
     &--outline-primary{
         border-radius: $radiusBtn;
-        background: white;
-        color: $c-primary;
+        background: $c-primary;
+        color: white;
         padding: $paddingBtn;
         border: 2px solid $c-primary ;
         transition: transform 100ms ease-in-out;
@@ -79,7 +164,6 @@ $radiusBtnLg: 0.5em;
             }
         }
         &:hover{
-            background-color: $c-primary;
             color: white;
             transform: scale(1.1);
         }
@@ -117,7 +201,8 @@ body{
 }
 a{
     &.primary{
-        color: $c-primary;
+        color: #000000;
+        font-weight: bold;
         text-decoration: none;
         &:hover{
             text-decoration: none;

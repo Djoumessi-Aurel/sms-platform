@@ -1,9 +1,12 @@
 
 export class Contact{
     constructor(
-        public number: string,
+        public _id: string,
         public name: string,
-        public photo: string
+        public phone: string,
+        public owner: string = '',
+        public createdAt: string = '',
+        public updatedAt: string = '',
 
     ){}
 }

@@ -9,10 +9,12 @@ import { AuthService} from '../../auth/services/auth.service'
 })
 export class NavComponent implements OnInit {
   adminStatus: boolean = false;
+  userName: string = ''
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.adminStatus = this.authService.isAdmin;
+    this.userName = this.authService.currentUser.name;
   }
   onSignOut() {
     this.authService.signOut();

@@ -28,9 +28,8 @@ export class ContactsComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     const name = form.value['name'];
-    const number = form.value['number'];
-    const photo = form.value['photo'];
-    this.contactService.addContact(this.addContact(number,name, photo));
+    const phone = form.value['phone'];
+    this.contactService.addContact(name, phone);
     form.resetForm();
   }
 }

@@ -1,36 +1,43 @@
 <div class=" my-2 px-3 py-3 contact">
     <div class="contact-content  mr-2">
-        <div class=""> <img src="../../../assets/images/profile.png" alt="{{name}} photo" width="50px" height="50px"/></div>
+        <div class=""> <img src="../../../assets/images/profile.jpeg" alt="{{contact.name}} photo" width="50px" height="50px"/></div>
         <div>
-            <a class="primary " data-toggle="collapse" href="#contact_{{id}}" role="button" aria-expanded="false" attr.aria-controls="contact_{{id}}" > {{name}}</a>
-            <div class="small "><a class="primary " data-toggle="collapse" href="#contact_{{id}}" role="button" aria-expanded="false" attr.aria-controls="contact_{{id}}" >{{number}}</a></div>
+            <a class="primary name"  role="button" aria-expanded="false" attr.aria-controls="contact_{{contact._id}}" > {{contact.name}}</a>
+            <div class="small "><a class="primary number"  role="button" aria-expanded="false" attr.aria-controls="contact_{{contact._id}}" >{{contact.phone}}</a></div>
+        </div>
+        <div class="contact-i" style="display: flex; gap: 5px">
+            <a data-toggle="collapse" href="#contact_{{contact._id}}"><i class="fas fa-user-edit" title="Modify the contact" ></i></a>
+            <i class="fas fa-sms" title="Write to this contact"></i>
+            <form (ngSubmit)="delete($event)">
+                <input type="hidden" value="contact_{{contact._id}}">
+                <button type="submit" class="delete">
+                    <i class="fas fa-trash-alt" title="Delete the contact"></i>
+                </button>
+                
+            </form>
+            
         </div>
         
     </div>
-    <div class="collapse mt-2" id="contact_{{id}}">
-        <div class="my-1"> <button class=" btn--outline-secondary">Write a message</button></div>
-        <div class="my-1"> <a  class="btn btn--outline-secondary " data-toggle="collapse" href="#contactForm_{{id}}" aria-expanded="false" attr.aria-controls="contactForm_{{id}}">Modify the contact</a></div>
-        <div class=" newContactForm p-3 collapse  mt-1" id="contactForm_{{id}}">
-            <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+    <div class="collapse mt-2" id="contact_{{contact._id}}">
+        <div class=" newContactForm p-3 collapse  mt-1 show" id="contactForm_{{contact._id}}">
+            <form (ngSubmit)="onSubmit(f ,$event)" #f="ngForm" >
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" name="name" ngModel required>
+                    <input type="text" id="name" class="form-control" name="name" [ngModel]="contact.name" required />
                 </div>
                 <div class="form-group">
-                    <label for="number">Phone number</label>
-                    <input type="text" id="number" class="form-control" name="number" ngModel required>
+                    <label for="phone">Phone number</label>
+                    <input type="text" id="phone" class="form-control" name="phone" [ngModel]="contact.phone" required>
                 </div>
-                <div class="form-group">
-                    <label for="photo">Photo</label>
-                    <input type="file" id="photo" class="" name="photo" ngModel >
-                </div>
-                <div class="submit ">
-                    <button type="submit" class="btn btn-outline-info" 
-                            [ngClass]="{'disabled':f.invalid}"> Modify </button>
+                
+                <div class="submit">
+                    
+                    <button type="submit" class="btn btn-outline-info modal-button" data-toggle="collapse" [disabled]="f.invalid"
+                            [ngClass]="{'disabled':f.invalid}"  > Modify </button>
                 </div>
 
             </form>
          </div> 
-        <div class="my-1"> <button  class=" btn--outline-secondary ">Delete the contact</button></div>
      </div> 
 </div>

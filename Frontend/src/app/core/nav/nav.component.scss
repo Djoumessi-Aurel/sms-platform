@@ -1,5 +1,10 @@
 @import "../../../styles.scss";
 
+.username{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 800px) {
     .hidden-sm{
       display: none;
@@ -21,7 +26,7 @@
     &::after{
         display: block;
         content: " ";
-        border-bottom: 2px solid white !important;
+        border-bottom: 2px solid rgb(0, 0, 0) !important;
     }
     
 }
@@ -30,7 +35,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    background: linear-gradient(45deg, $c-secondary, $c-primary );
+    background: rgb(247, 247, 247);
     justify-content: space-between;
     height: 5em;
     font-size: 1em;
@@ -49,7 +54,7 @@
     a{
         text-align: center;
         padding: 12px;
-        color: white;
+        color: rgb(12, 12, 12);
         text-decoration: none;
         font-size: 17px;
         &:not(.active-link){
@@ -58,7 +63,7 @@
                     display: block;
                     content: " ";
                     
-                    border-bottom: 2px solid white;
+                    border-bottom: 2px solid rgb(0, 0, 0);
                     transform: scaleX(0);
                     transition: transform  250ms ease-in-out;
                     transform-origin: 0% 50%;
@@ -77,25 +82,26 @@
     }
     
     .nav--right .dropdown-menu {
-        background-color: $c-primary;
+        // background-color: $c-primary;
+        background-color: #fff;
         a{
             text-align: center;
             padding: 12px;
-            color: white;
+            color: rgb(0, 0, 0);
             text-decoration: none;
             font-size: 17px;
             &.fromleft{
                 &::after{
                     display: block;
                     content: " ";
-                    border-bottom: 2px solid white;
+                    border-bottom: 2px solid rgb(12, 12, 12);
                     transform: scaleX(0);
                     transition: transform  250ms ease-in-out;
                     transform-origin: 0% 50%;
         
                 }
                 &:hover{
-                    background-color: $c-primary;
+                    background-color: rgb(247, 247, 247);
                     &::after{
                         transform: scaleX(1);
                         

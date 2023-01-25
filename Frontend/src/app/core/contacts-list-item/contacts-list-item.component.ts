@@ -8,20 +8,32 @@ import { ContactService } from '../services/contact.service';
   styleUrls: ['./contacts-list-item.component.scss']
 })
 export class ContactsListItemComponent implements OnInit {
-  @Input() id:number=0;
-  @Input() name:string = "John Doe";
-  @Input() number:string = "6700000876";
-  @Input() photo:string = '';
-  currentContact:Contact = new Contact("675654454","Joe","");
+  @Input() contact:Contact = new Contact("klsjfdlk1fkd","Joe","675654454");
+
   constructor(private contactService:ContactService) { }
 
   ngOnInit(): void {
   }
-  onSubmit(form: NgForm) {
-    const name = form.value['name'];
-    const number = form.value['number'];
-    const photo = form.value['photo'];
-    this.contactService.modifyContact(this.currentContact,name,number, photo);
-    form.resetForm();
+
+  delete(event:any){
+    let a=confirm(`Do you really want to remove this contact?\nName: ${this.contact.name}, Phone: ${this.contact.phone}`)
+    if(a){
+      //Function to delete the contact
+      this.contactService.deleteContact(this.contact._id)
+    }
+    
+  }
+
+  onSubmit(form: NgForm, event:any) {
+    let a=confirm("Do you really want to modify this contact?")
+
+    if(a){
+      const name = form.value['name'];
+      const number = form.value['phone'];
+      //Function to update the contact
+      this.contactService.updateContact(this.contact._id, name, number)
+    }
+   
+   form.resetForm({name: this.contact.name, phone: this.contact.phone})
   }
 }

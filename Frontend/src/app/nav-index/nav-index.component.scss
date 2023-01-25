@@ -3,6 +3,7 @@
 @media screen and (max-width: 800px) {
     .hidden-sm{
       display: none;
+  
     }
     .dropdown{
         position: relative;
@@ -36,11 +37,12 @@
     display: flex;
     align-items: center;
     width: 100%;
-    background: linear-gradient(45deg, $c-secondary, $c-primary );
+    background: #fff;
+    // background: linear-gradient(45deg, $c-secondary, $c-primary );
     justify-content: space-between;
     height: 5em;
     font-size: 1em;
-    position: relative;
+    position: st;
     &--right{
         display: flex;
         align-items: center;
@@ -58,7 +60,7 @@
     a{
         text-align: center;
         padding: 12px;
-        color: white;
+        color: rgb(0, 0, 0);
         text-decoration: none;
         font-size: 17px;
         &:not(.active-link){
@@ -67,7 +69,7 @@
                     display: block;
                     content: " ";
                     
-                    border-bottom: 2px solid white;
+                    border-bottom: 2px solid rgb(0, 0, 0);
                     transform: scaleX(0);
                     transition: transform  250ms ease-in-out;
                     transform-origin: 0% 50%;
@@ -90,14 +92,14 @@
         a{
             text-align: center;
             padding: 12px;
-            color: white;
+            color: rgb(0, 0, 0);
             text-decoration: none;
             font-size: 17px;
             &.fromleft{
                 &::after{
                     display: block;
                     content: " ";
-                    border-bottom: 2px solid white;
+                    border-bottom: 2px solid rgb(0, 0, 0);
                     transform: scaleX(0);
                     transition: transform  250ms ease-in-out;
                     transform-origin: 0% 50%;
