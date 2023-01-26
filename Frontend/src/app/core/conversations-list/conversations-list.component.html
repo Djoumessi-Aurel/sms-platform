@@ -7,10 +7,17 @@
           <i *ngIf="showInput" class="fa fa-minus-square"  aria-hidden="true" title="Hide"
           (click)="toggleShowInput()"></i>
       </div>
-      <div *ngIf="showInput">
-        <label for="number0">Number</label>
-        <input type="text" name="number0" id="number0" [(ngModel)]="inputNumber">
+      <div *ngIf="showInput" class="write-number">
+        <label for="number0">Write to: </label>
+        <input type="text" name="number0" id="number0" placeholder="Number" [(ngModel)]="inputNumber">
         <i class="fa fa-arrow-circle-right" aria-hidden="true" title="Go" (click)="writeToNumber()"></i>
+        <hr/>
+      </div>
+      <div class="search-bar">
+        <input type="text" name="filterText" id="filterText" placeholder="Name or number" [(ngModel)]="filterText" >
+          <button>
+              <i class="fa fa-fw fa-search"></i>
+          </button>
       </div>
   </div>
 </div>

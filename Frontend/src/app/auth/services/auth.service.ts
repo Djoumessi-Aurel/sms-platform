@@ -34,7 +34,7 @@ export class AuthService {
                     this.currentUser = response.data.result
                     this.currentUser.token = response.data.token
                     this.isAuth = true
-                    console.log("IsAuth=", this.isAuth, this.currentUser)
+                    // console.log("IsAuth=", this.isAuth, this.currentUser)
                 })
                 .catch((error)=>{
                     reject(error.response)

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ConversationService } from '../services/conversation.service';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
+import { Contact } from 'src/app/models/contact.model';
+import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-conversations-list',
@@ -15,6 +17,10 @@ export class ConversationsListComponent implements OnInit {
   sentMessages: any[] = []
   showInput: boolean = false
   inputNumber: string = ''
+  filterText: string = ''
+
+  contactSubscription: Subscription = new Subscription()
+  contacts: Contact[] = []
 
   get convList(){
     let receiverList: any[] = []
@@ -41,6 +47,12 @@ export class ConversationsListComponent implements OnInit {
     for(let phone in _convListObject){
       finalTab.push({receiver: phone, messageList: _convListObject[phone]})
     }
+
+    if(this.filterText !== ''){ let fil = this.filterText.toLowerCase()
+      finalTab = finalTab.filter((value)=>{
+        return this.getContactName(value.receiver).toLowerCase().includes(fil)
+      })
+    }
     
     return finalTab.sort((a, b) => {
       let lastA = a.messageList[a.messageList.length - 1];
@@ -49,7 +61,8 @@ export class ConversationsListComponent implements OnInit {
     })
   }
 
-  constructor(private router: Router, private convService: ConversationService) { }
+  constructor(private router: Router, private convService: ConversationService,
+    private contactService: ContactService) { }
 
   toggleShowInput(): void {
     this.showInput = !this.showInput
@@ -61,6 +74,21 @@ export class ConversationsListComponent implements OnInit {
     );
 
     this.convService.refreshMessages()//.then((response)=>{console.log(response)})
+
+    this.contactSubscription = this.contactService.contactSubject.subscribe(
+      (contacts:Contact[]) => { this.contacts = contacts; }
+    )
+    
+    this.contactService.emitContacts()
+  }
+
+  getContactName(phone: string){
+    //If the phone number is in the contacts, return the related contact name
+    //else, return the phone number
+    let contact = this.contacts.find((value)=>{return value.phone === phone})
+
+    if(contact) return contact.name
+    return phone
   }
 
   onViewConv(phone: string){
