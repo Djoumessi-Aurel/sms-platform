@@ -13,7 +13,7 @@ import { ConversationsListItemComponent } from './conversations-list-item/conver
 import { SingleConversationComponent } from './single-conversation/single-conversation.component';
 import { ConversationsViewComponent } from './conversations-view/conversations-view.component';
 import { MessageComponent } from './message/message.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ContactService} from './services/contact.service';
 import { SettingsComponent } from './settings/settings.component';
@@ -45,7 +45,8 @@ import { ResultListItemContactComponent } from './result-list-item-contact/resul
   imports: [
     CommonModule,
     CoreRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [NavComponent],
   providers: [ContactService, SearchService]

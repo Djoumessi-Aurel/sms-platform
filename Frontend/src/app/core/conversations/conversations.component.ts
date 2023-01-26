@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ConversationService } from '../services/conversation.service';
 
 @Component({
   selector: 'app-conversations',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./conversations.component.scss']
 })
 export class ConversationsComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private convService: ConversationService) { }
 
   ngOnInit(): void {
   }
+
 
 }

@@ -56,7 +56,9 @@ const getReceived = async (req, res)=>{
 // send a SMS
 const send = async (req, res)=>{
     try {
-    const {content, sender, receivers} = req.body
+    let {content, sender, receivers} = req.body
+	receivers = [...new Set(receivers)]; //eliminate duplicates in the receiver list
+	
     let user = await User.findById(sender)
     if(!user) throw new Error(`User ${sender} does not exist`)
 
@@ -64,11 +66,11 @@ const send = async (req, res)=>{
     //Using the external API to send SMS
     for(let receiver of receivers){
         try {
-            let res = await axios.post(process.env.SEND_SMS_URL, { phoneNumber: receiver, message: content }, {
+            /*let res = await axios.post(process.env.SEND_SMS_URL, { phoneNumber: receiver, message: content }, {
             headers: {
                 'Authorization': process.env.SMS_TOKEN
             }
-        })
+        })*/
         console.log('Résultat de la requête:', res)
         finalReceivers.push(receiver)
 

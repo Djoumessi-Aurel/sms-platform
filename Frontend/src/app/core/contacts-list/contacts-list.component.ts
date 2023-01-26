@@ -43,9 +43,7 @@ export class ContactsListComponent implements OnInit {
     );
     
     this.contactService.refreshContacts()
-    .then(()=>{
-      this.contactService.emitContacts()
-    }) 
+
   }
 
   ngOnDestroy() {

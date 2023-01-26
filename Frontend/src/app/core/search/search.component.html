@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col ">
             <form class="form mt-3" (ngSubmit)="onSubmit(f)" #f="ngForm">
-                <input class="form-control mr-1" type="search" placeholder="Search contact or message" aria-label="Search" name="searchText" ngModel required >
+                <input class="form-control mr-1" type="search" placeholder="Search with a specific type..." aria-label="Search" name="searchText" ngModel required >
                 <select name="category" class="ml-2 mr-2" ngModel >
-                    <option value="" disabled>Category</option>
+                    <option value="" disabled>Type</option>
                     <option *ngFor="let choice of choices" [ngValue]="choice.value">{{choice.content}}</option>
                 </select> 
                 <button class="btn btn--outline-primary " type="submit"><i class="fa fw fa-search" [ngClass]="{'disabled':f.invalid}"></i></button>
@@ -20,12 +20,8 @@
     </div>
     <div class="row mt-5">
         <div class="col col-lg-8">
-            <p>Results search</p>
+            <p>Results of search</p>
         </div>
-    </div>
-    <div class="row mt-1 page">
-        <a role="button" routerLink="" class="btn btn--sm btn--secondary">Previous page</a>
-        <a role="button" routerLink="" class="btn btn--sm btn--secondary">Next page</a>
     </div>
     <div class="row mt-2">
         <div class="col col-lg-8" *ngIf="isContact">
@@ -39,3 +35,4 @@
     
     
 </section>
+

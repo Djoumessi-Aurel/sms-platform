@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from '../services/contact.service';
+import { ConversationService } from '../services/conversation.service';
 @Component({
   selector: 'app-contacts-list-item',
   templateUrl: './contacts-list-item.component.html',
@@ -10,9 +12,10 @@ import { ContactService } from '../services/contact.service';
 export class ContactsListItemComponent implements OnInit {
   @Input() contact:Contact = new Contact("klsjfdlk1fkd","Joe","675654454");
 
-  constructor(private contactService:ContactService) { }
+  constructor(private contactService:ContactService, private convService: ConversationService, private router: Router) { }
 
   ngOnInit(): void {
+    this.convService.refreshMessages() //So that when we click to write to a contacts, the messages are already there.
   }
 
   delete(event:any){
@@ -36,4 +39,9 @@ export class ContactsListItemComponent implements OnInit {
    
    form.resetForm({name: this.contact.name, phone: this.contact.phone})
   }
+
+  onWriteToContact(){
+    this.router.navigate(['core', 'conversations', this.contact.phone])
+  }
+
 }

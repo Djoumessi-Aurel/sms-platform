@@ -4,23 +4,30 @@
    
     
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     font-size: 1em;
-    border-bottom: 1px solid $c-primary;
     
     &-content{
         display: flex;
         align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
         img{
-            color: $c-primary;
-            border: 0.15em solid $c-primary;
+            color:  rgb(8, 8, 8);
+            border: 0.15em solid  #aaa;
             width: 50px;
             height: 50px;
             border-radius: 25px;
             margin-right: 1em;
-            
         }
+    }
+
+    .details{
+        font-size: small;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        display: flex;
+        place-items: center;
+        text-align: right;
     }
     
 }

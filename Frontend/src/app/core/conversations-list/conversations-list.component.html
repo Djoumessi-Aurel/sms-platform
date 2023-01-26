@@ -1,8 +1,23 @@
-
-<div *ngFor="let conv of conversations; let i = index"
-        (click)="onViewConv(i)" class="conversation"> 
+<div class="row title">
+  <div class="col mb-3 text-center">
+      <div class="line">
+        <h3>Chats ({{convList.length}})</h3>
+        <i *ngIf="!showInput" class="fa fa-plus-square" aria-hidden="true" title="Write to a specific number"
+          (click)="toggleShowInput()"></i>
+          <i *ngIf="showInput" class="fa fa-minus-square"  aria-hidden="true" title="Hide"
+          (click)="toggleShowInput()"></i>
+      </div>
+      <div *ngIf="showInput">
+        <label for="number0">Number</label>
+        <input type="text" name="number0" id="number0" [(ngModel)]="inputNumber">
+        <i class="fa fa-arrow-circle-right" aria-hidden="true" title="Go" (click)="writeToNumber()"></i>
+      </div>
+  </div>
+</div>
+<div *ngFor="let conv of convList"
+        (click)="onViewConv(conv.receiver)" class="conversation"> 
         <app-conversations-list-item 
-        [nomContact]="conv.nom"
-        [lastMessage]="conv.message"
+        [receiver]="conv.receiver"
+        [messageList]="conv.messageList"
           ></app-conversations-list-item>
 </div>

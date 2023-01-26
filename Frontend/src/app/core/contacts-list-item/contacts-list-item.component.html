@@ -7,7 +7,7 @@
         </div>
         <div class="contact-i" style="display: flex; gap: 5px">
             <a data-toggle="collapse" href="#contact_{{contact._id}}"><i class="fas fa-user-edit" title="Modify the contact" ></i></a>
-            <i class="fas fa-sms" title="Write to this contact"></i>
+            <i class="fas fa-sms" title="Write to this contact" (click)="onWriteToContact()"></i>
             <form (ngSubmit)="delete($event)">
                 <input type="hidden" value="contact_{{contact._id}}">
                 <button type="submit" class="delete">

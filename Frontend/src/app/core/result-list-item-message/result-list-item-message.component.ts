@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./result-list-item-message.component.scss']
 })
 export class ResultListItemMessageComponent implements OnInit {
-  @Input() content:string="Hey you";
+  @Input() content:string="Loveeee?👀";
   @Input() hour:Time={hours:12,minutes:9};
   constructor() { }
 

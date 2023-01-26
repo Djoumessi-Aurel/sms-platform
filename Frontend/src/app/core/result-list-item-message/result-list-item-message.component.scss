@@ -1,3 +1,18 @@
-.message{
-    border: 1px solid black
-}
+
+.chatlist .block .details {
+    position: relative;
+    width: 100%;
+  }
+
+  .chatlist .block .details .listHead h4 {
+    font-size: 1.1em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    color: #111;
+  }
+  .message_p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  

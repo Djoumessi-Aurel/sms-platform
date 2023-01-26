@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
       this.isContact = false;
       this.messages = this.searchService.getMessages();
     }
-    console.log(this.contacts);
+    // console.log(this.contacts);
   }
 
 }

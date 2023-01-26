@@ -3,10 +3,12 @@ section{
     h3{
         
         text-decoration: underline;
+        text-transform: uppercase;
+        font-family: 'Times New Roman';
     }   
 }
 .newContactForm{
-    border: 1px solid $c-primary;
+    border: none;
     .submit{
         display: flex;
         justify-content: end;
@@ -15,13 +17,20 @@ section{
 .row{
     display: flex;
     justify-content: center;
+     margin: 0 0 0 20px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family:Georgia;
+  font-size: 13pt;
+  color:#000000;
 }
 .form{
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
-.page{
-    display: flex;
-    justify-content: space-between;
+    text-transform: lowercase;
+    border: none;
+    margin-left: 15px;
+  height:38px;
+  width:100%;
 }

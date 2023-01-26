@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, NgForm, Validators } from '@angular/forms';
+import { ConversationService } from '../services/conversation.service';
+import { Subscription } from 'rxjs';
+import { Contact } from 'src/app/models/contact.model';
+import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-single-conversation',
@@ -8,18 +12,68 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./single-conversation.component.scss']
 })
 export class SingleConversationComponent implements OnInit {
-  id:string='';
-  nomContact:string='John DOE';
-  messages = ["whats up Fella?","Are u okay?","ETA: 5mins", "You weirdo !", "I'm freaking awesome, they gonna like me obviously !", "ARE YOU IGNORING ME ?!", "Fine, i'm sorry", "will break your neck if you don't answer me RIGHT NOW!","I'm freaking awesome, they gonna like me obviously !", "ARE YOU IGNORING ME ?!", "Fine, i'm sorry", "will break your neck if you don't answer me RIGHT NOW!"]
-  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+  messagectrl!: FormControl
+
+  receiver: string = '' //Phone number of the receiver
+  messagesSubscription: Subscription = new Subscription()
+  sentMessages: any[] = [] //All the messages sent by the current user, to all his receivers
+  contactSubscription: Subscription = new Subscription()
+  contacts: Contact[] = []
+
+  constructor(private route: ActivatedRoute, private formbuilder:FormBuilder, private convService:ConversationService,
+     private contactService: ContactService) { }
+
+  get receiverName(){
+      let contact = this.contacts.find((value)=>{return value.phone === this.receiver})
+
+      if(contact) return contact.name
+      return ''
+    }
+
+  get messages(){ //Messages sent by the current user to this receiver
+
+    let finalTab = []
+
+    for(let message of this.sentMessages){
+      let {_id, content, createdAt} = message
+
+      if(message.receivers.indexOf(this.receiver) > -1){
+        finalTab.push({_id, content, createdAt})
+      }
+    }
+    
+    return finalTab
   }
+  
+  ngOnInit(): void {
+    this.receiver = this.route.snapshot.params['id'];
+    this.messagectrl = this.formbuilder.control('', [Validators.required])
+
+    this.messagesSubscription = this.convService.sentMessagesSubject.subscribe(
+      (messages:any[]) => { this.sentMessages = messages;  }
+    )
+
+    this.contactSubscription = this.contactService.contactSubject.subscribe(
+      (contacts:Contact[]) => { this.contacts = contacts; }
+    )
+    
+    this.contactService.emitContacts()
+
+    this.convService.emitMessages()
+  }
+
+ 
   onSubmit(form: NgForm) {
-    const message = form.value['message'];
-    console.log(message);
-    form.resetForm();
+    if(form.invalid) return
+
+    let message = form.value['message']
+    if(message.trim() === '') return
+  
+    this.convService.sendMessage(message, [this.receiver])
+    .then(()=>{form.resetForm()})
+    .catch((error)=>{console.log(error)})
+   
   }
 
 }

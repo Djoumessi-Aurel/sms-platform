@@ -1,29 +1,51 @@
 import { Injectable } from '@angular/core';
 import { Conversation } from '../../models/conversation.model';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConversationService {
-  conversationSubject = new Subject<Conversation[]>();
-  private conversations: Conversation[] = [];
+  sentMessagesSubject = new Subject<any[]>();
+  private sentMessages: any[] = []; //List of the current user sent messages
 
-  emitConversations() {
-    this.conversationSubject.next(this.conversations.slice());
+  emitMessages() {
+    this.sentMessagesSubject.next(this.sentMessages.slice());
   }
 
-  addConversation(conversation: Conversation) {
-    this.conversations.push(conversation);
-    this.emitConversations();
+  refreshMessages() {
+    
+    return new Promise((resolve, reject)=>{
+      axios.get(this.authService.backendUrl + '/sms/getSent/' + this.authService.currentUser.email)
+                .then((response)=>{//console.log('Getting contacts: OK')
+                    this.sentMessages = response.data.docs
+                    this.emitMessages()
+                    resolve('Getting SMS: OK')
+                    //resolve(this.sentMessages)
+                })
+                .catch((error)=>{
+                    reject(error.response)
+                })
+    })
   }
-  deleteContact(conversation: Conversation){
-    ////
-    this.emitConversations();
+
+  sendMessage(content: string, receivers: string[]) {
+    return new Promise((resolve, reject)=>{
+      axios.post(this.authService.backendUrl + '/sms/send', {content, sender: this.authService.currentUser._id, receivers})
+                .then((response)=>{//console.log(response.data.content)
+                    this.sentMessages.push(response.data.content)
+                    this.emitMessages()
+                    resolve('Sending SMS: OK')
+                })
+                .catch((error)=>{
+                    reject(error.response)
+                })
+    })
   }
-  modifyContact(conversation: Conversation){
-    //////////
-    this.emitConversations();
+
+  constructor(private authService: AuthService) { 
+    
   }
-  constructor() { }
 }
