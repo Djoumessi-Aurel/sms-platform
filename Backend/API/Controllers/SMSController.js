@@ -66,12 +66,12 @@ const send = async (req, res)=>{
     //Using the external API to send SMS
     for(let receiver of receivers){
         try {
-            /*let res = await axios.post(process.env.SEND_SMS_URL, { phoneNumber: receiver, message: content }, {
+            let res = await axios.post(process.env.SEND_WHA_URL, { phoneNumber: receiver, message: content }, {
             headers: {
-                'Authorization': process.env.SMS_TOKEN
+                'Authorization': 'Basic ' + process.env.SMS_TOKEN
             }
-        })*/
-        console.log('Résultat de la requête:', res)
+        })
+        console.log('Résultat de la requête:', res.data)
         finalReceivers.push(receiver)
 
         } catch (error) {
