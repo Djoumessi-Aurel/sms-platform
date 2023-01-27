@@ -1,0 +1,61 @@
+@import "../../../styles.scss";
+.conversation{
+    border: none;
+    background-color: #e5ddd5;;
+    &-header{
+        display: flex;
+        align-items: center;
+        background: #f6f7f2;
+        border-bottom: 1px solid $c-secondary;
+        .photo-name{
+        
+              h4 {
+                margin: 0 0 0 20px;
+                // text-transform: uppercase;
+                font-style: italic;
+                font-family:Georgia;
+                font-size: 13pt;
+                color:#0a0000;
+              }
+            flex-grow: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+             
+            
+        }
+    }
+    &-body{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end !important;
+        background-color: #e5ddd5;;
+    }
+    &-footer{
+        display: flex;
+        form{
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            align-items: center !important;
+            justify-content: space-between;
+            .left{
+                flex-grow: 5;
+                position: sticky;
+                bottom: 0;
+                
+            }
+            .right{
+                flex-grow: 1;
+                position: sticky;
+                bottom:0;
+                right:0
+            }
+         
+        }
+        textarea{
+            resize: none;
+        }
+    }
+}

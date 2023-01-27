@@ -1,0 +1,67 @@
+<section class="pt-3 px-5 shadow-lg">
+    <div class="row title">
+        <div class="col mb-3 text-center">
+            <h3>Contacts ({{numberOfContats}})</h3>
+        </div>
+    </div>
+    <div>
+        <label class="import" for="import" title="import contacts">
+            <span class="import btn--outline-primary"  data-toggle="collapse" aria-expanded="false"><i class="fa fa-w fa-file-import"></i> Import contacts</span>
+        </label>
+        <span class="mx-2" *ngIf="isImporting" >Importation en cours...</span>
+        <input type="file" id="import" name="import" accept=".csv" (change)="processFile($event)" />
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="my-1">
+                <button class=" btn--outline-primary"  data-toggle="collapse" href="#newContactForm" aria-expanded="false" attr.aria-controls="newContactForm"><i class=" fa fw fa-plus-circle"></i> New contact</button>
+            </div>
+        </div>
+        <div class="search-bar">
+            <form>
+                <span class="mx-3">
+                <label for="sort" title="sort"><i class="fa fa-fw fa-sort"></i></label>
+                <select name="sort" id="sort" [(ngModel)]="sortDirection" >
+                    <option value="1">A to Z</option>
+                    <option value="2">Z to A</option>
+                </select>
+                </span>
+                <input type="text" name="filterText" id="filterText" placeholder="Name or number" [(ngModel)]="filterText" >
+                <button>
+                    <i class="fa fa-fw fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-box row collapse"  id="newContactForm">
+        <div class="col-lg-6 col">
+            <div class=" newContactForm   mt-1 box" >
+                <div class="off" data-toggle="collapse" href="#newContactForm">X</div>
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" name="name" ngModel required style="background: #f2f2f2; " >
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input type="text" id="phone" class="form-control" name="phone" style="background: #f2f2f2; " ngModel required>
+                    </div>
+                    
+                    <div class="submit ">
+                        <button type="submit" class="modal-button btn btn-outline-success" 
+                                [ngClass]="{'disabled':f.invalid}" data-toggle="collapse" href="#newContactForm"> Add </button>
+                    </div>
+
+                </form>
+             </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            
+            <app-contacts-list [filterText]="filterText" [sortDirection]="sortDirection"></app-contacts-list>
+        </div>
+    </div>
+   
+</section>
+

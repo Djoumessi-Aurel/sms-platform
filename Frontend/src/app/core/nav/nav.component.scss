@@ -1,0 +1,115 @@
+@import "../../../styles.scss";
+
+.username{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+    .hidden-sm{
+      display: none;
+    }
+    .dropdown{
+        position: relative;
+    }
+    .nav{
+        .nav--right .dropdown-menu.menu{
+            position: relative;
+            margin-right: 5.1em;
+            a{
+                text-align: center;
+            }
+        }
+    }   
+}
+.active-link{
+    &::after{
+        display: block;
+        content: " ";
+        border-bottom: 2px solid rgb(0, 0, 0) !important;
+    }
+    
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: rgb(247, 247, 247);
+    justify-content: space-between;
+    height: 5em;
+    font-size: 1em;
+    position: relative;
+    &--right{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-right: 1em;
+        .dropdown-menu.menu{
+            position: relative;
+            margin-right: 2em;
+        }
+        
+    }
+    a{
+        text-align: center;
+        padding: 12px;
+        color: rgb(12, 12, 12);
+        text-decoration: none;
+        font-size: 17px;
+        &:not(.active-link){
+            &.fromleft{
+                &::after{
+                    display: block;
+                    content: " ";
+                    
+                    border-bottom: 2px solid rgb(0, 0, 0);
+                    transform: scaleX(0);
+                    transition: transform  250ms ease-in-out;
+                    transform-origin: 0% 50%;
+        
+                }
+                &:hover {
+                    &::after{
+                        transform: scaleX(1);
+                        
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    
+    .nav--right .dropdown-menu {
+        // background-color: $c-primary;
+        background-color: #fff;
+        a{
+            text-align: center;
+            padding: 12px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 17px;
+            &.fromleft{
+                &::after{
+                    display: block;
+                    content: " ";
+                    border-bottom: 2px solid rgb(12, 12, 12);
+                    transform: scaleX(0);
+                    transition: transform  250ms ease-in-out;
+                    transform-origin: 0% 50%;
+        
+                }
+                &:hover{
+                    background-color: rgb(247, 247, 247);
+                    &::after{
+                        transform: scaleX(1);
+                        
+                    }
+                }
+            }
+
+        }
+    }
+    
+  }

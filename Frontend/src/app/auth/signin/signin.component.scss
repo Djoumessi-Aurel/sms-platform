@@ -1,0 +1,69 @@
+@import "../../../styles.scss";
+.row{
+    display:flex;
+    justify-content: center;
+   
+}
+.pic{
+    background: url("../../../assets/images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+    background-position: center center;
+    padding-bottom: 102px;
+}
+#logo{
+    width: 75px;
+    height: 75px;
+    border: 1px solid $c-primary;
+    border-radius: 37.5px;
+}
+
+.form{
+    background-color: white;   
+}
+.mb-3{
+    position: relative;
+    .passwordDiv{
+        position:relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        input{
+            position: relative;
+            
+        }
+    }
+}
+
+.signinMessage{
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 0.05em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+a{
+    color: $c-primary;
+}
+.quote{
+    margin-top: 1em;
+    color: $c-primary;
+}
+
+@media screen and (max-width: 800px) {
+    
+    .row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .row .form{
+       margin-top: 2em;
+       margin-bottom: 3em;
+    }
+    .quote{
+        display: none;
+    }
+}
