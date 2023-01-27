@@ -1,0 +1,26 @@
+.conversation{
+    cursor:pointer;
+    position: relative;
+    width: 100%;
+    // padding: 50px;
+    overflow-y: auto;
+    border: none;
+    // background-color: rgba(184, 184, 240, 0.3);
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 255, 0.12);
+}
+
+.search-bar input{
+    width: 180px;
+}
+
+.conversation:hover{
+    background-color: rgba(184, 200, 240, 0.2);
+   }
+
+h3{display: inline;}
+
+i.fa-plus-square, i.fa-minus-square{margin-left: 10px;}
+i.fa{font-size: large;}
+
+.write-number i.fa:hover, .line i.fa:hover{color: #1976d2; scale: 1.1;}

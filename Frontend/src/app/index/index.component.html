@@ -1,0 +1,59 @@
+<app-nav-index></app-nav-index>
+<section class="jumbotron-fluid ">
+  <div class="text-center mb-5 bg--overlay ">
+    <h1 class="jumbo-title">Welcome to LE NJOH ! </h1>
+    <br/>
+    <p class="text-center mb-5" >Your free and easy to use SMS sending application</p> 
+    <a role="button" *ngIf="!isAuth" routerLink="/auth/signin" class="btn btn--md btn--primary">Get Started</a>  
+    <a role="button" *ngIf="isAuth" routerLink="/core" class="btn btn--md btn--primary">Get Started</a>
+  </div>
+</section>
+<div class="container">
+  <p style="text-align: center; font-weight: Bold; font-size: 30px;">ABOUT US</p>
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        
+        <div class="card mb-3 mb-lg-0 shadow border-radius 20  rounded-top">
+          <img class="card-img-top" src="../../assets/images/img4.png" alt="Instructions"/>
+          <div class="card-body">
+            <h5 class="card-title">Fast</h5>
+            <p class="card-text">With SendIt, you can send sms as fast as you want ! </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 ">
+        <div class="card mb-3 mb-lg-0 shadow border">
+          <img class="card-img-top" src="../../assets/images/img2.png" alt="Instructions"/>
+          <div class="card-body">
+            <h5 class="card-title">Secure</h5>
+            <p class="card-text">Send your SMS with the entire confidentiality. No one can spy on you!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="card mb-3 mb-lg-0 shadow border">
+          <img class="card-img-top " src="../../assets/images/img3.png" alt="Instructions"/>
+          <div class="card-body">
+            <h5 class="card-title">Toll-free</h5>
+            <p class="card-text">Send as many SMS as you want without fees. It is all free !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <hr>
+  
+  <!-- <div class="container">
+      <div class="row my-5">
+          <div class="col">
+              <ul class="list-inline text-center">
+                  <li class="list-inline-item"><a href="#">About</a></li>
+                  <li class="list-inline-item">&middot;</li>
+                  <li class="list-inline-item"><a href="#">Private life</a></li>
+                  <li class="list-inline-item">&middot;</li>
+                  <li class="list-inline-item"><a href="#">Terms of use</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>   -->
+    

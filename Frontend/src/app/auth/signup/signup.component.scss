@@ -1,0 +1,68 @@
+@import "../../../styles.scss";
+.row{
+    display: flex;
+    justify-content: center;
+}
+.form{
+    
+    background-color: white;
+    position: relative;
+    margin: 0;
+    top: 0;
+}
+.picc{
+    background: url("../../../assets/images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+#logo{
+    width: 75px;
+    height: 75px;
+    border: 1px solid $c-primary;
+    border-radius: 37.5px;
+    
+}
+
+a{
+    color: $c-primary;
+}
+.quote{
+    margin-top: 1em;
+    color: $c-primary;
+}
+.mb-2{ //css code for the eye icon to be placed near the input password
+    position: relative;
+    .passwordDiv{
+        position:relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        input{
+            position: relative;
+            
+        }
+    }
+}
+.signupMessage{
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 0.05em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .row{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .row .form{
+       margin-top: 2em;
+       margin-bottom: 3em;
+    }
+    .quote{
+        display: none;
+    }
+}

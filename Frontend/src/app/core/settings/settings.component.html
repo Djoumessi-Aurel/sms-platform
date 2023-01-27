@@ -1,0 +1,47 @@
+<section class="pt-3 px-5 shadow-lg">
+    <div class="row title">
+        <div class="col mb-3 text-center">
+            <h3>Informations</h3>
+        </div>
+    </div>
+    <!-- <div class="row my-3">
+        <div class="col">
+            <div class="my-1">
+                <button class=" " [ngClass]="{'btn-info': isShow, 'btn': isShow, 'btn--primary': !isShow }" (click)="onModify()"><i class=" fa fw fa-pencil"></i> <span *ngIf="!isShow">Modify profile</span><span *ngIf="isShow">Modifying ...</span> </button>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="m-3">
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text" id="username" class="form-control" name="username"  [ngModel] = "currentUser.name" [disabled]="!isShow" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" name="email" [ngModel] = "currentUser.email" [disabled]="!isShow" required>
+                </div>
+                <div class="form-group">
+                    <label for="number">Phone number</label>
+                    <input type="text" id="number" class="form-control" name="number" [ngModel] = "currentUser.phone" [disabled]="!isShow" required>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" name="password" [ngModel] = "currentUser.password" [disabled]="!isShow" required>
+                </div> -->
+                <!-- <div class="form-group">
+                    <label for="photo">Photo</label><br/>
+                    <input type="file" id="photo" class="" name="photo" [ngModel] = "currentUser.photo" [disabled]="!isShow" >
+                </div> -->
+                <!-- <div class="submit">
+                    <button type="submit" class="btn btn-outline-success " 
+                            [ngClass]="{'disabled':f.invalid}" [disabled]="!isShow || f.invalid"> Modify </button>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+    
+    
+</section>

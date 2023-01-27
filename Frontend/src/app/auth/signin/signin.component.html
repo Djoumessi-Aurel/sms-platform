@@ -1,0 +1,68 @@
+<section class=" px-0 ">
+    <div class="pic">
+        <div class="row ">
+            <div class="col-lg-4 col p-4 m-sm-5 form shadow-lg" >
+                <div class="text-center"><img src="../../../assets/images/looo.png" id="logo" alt="Logo du site" /><p>LE NJOH</p></div>
+                <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+                    <div class="signinMessage alert-danger"
+                    *ngIf="signinMessage != '' ">
+                        <p>{{signinMessage}}</p>
+                    </div>
+                    <div class="authMessage alert-warning"
+                    *ngIf="authMessage != '' ">
+                        <p>{{authMessage}}</p>
+                    </div>
+                    
+                    <div class="mb-3 ">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email"
+                        class="form-control"
+                        id="email"
+                        formControlName="email" />
+                    </div>
+                    <div class="mb-1 small text-danger"
+                                    *ngIf="email?.errors?.email"><p>Please enter a valid email</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="passwordDiv">
+                            <input type="password"
+                                    class="form-control"
+                                    id="password"
+                                    formControlName="password"
+                                    appPassword >
+                        </div>
+                        <!-- <div class="mb-1 small text-danger"
+                                *ngIf="password?.errors?.required"><p>The password is required</p>
+                        </div> -->
+                    </div>
+                    <!-- <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="check">
+                        <label class="form-check-label" for="check">Check me out</label>
+                    </div> -->
+                    <div class="text-center">
+                        <button type="submit" 
+                        class="btn btn--outline-primary"
+                        [ngClass]="{'btn--disabled':signinForm.invalid}"
+                        >Sign in</button>
+                    </div>
+                    <div class="text-center mt-2">
+                        <a routerLink="/auth/forgotpassword" class="fromleft">Forgot password ?</a>
+                    </div>  
+                    <hr>
+                    <div class="text-center mt-2">
+                        <a routerLink="/auth/signup">Don't have an account ? Sign up</a>
+                    </div>   
+                </form>
+                
+                <div class=" d-flex align-items-end flex-column mt-2 " >
+                    <br>
+                    <a routerLink="/">Go back to home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</section>
+

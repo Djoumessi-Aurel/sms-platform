@@ -11,11 +11,11 @@ const login = async (req, res) => {
   try {
     const oldUser = await User.findOne({ email })
 
-    if (!oldUser) return res.status(404).json({ message: "User doesn't exist" })
+    if (!oldUser) return res.status(401).json({ message: "Wrong credentials" })
 
     const isPasswordCorrect = await bcrypt.compare(password, oldUser.password)
 
-    if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" })
+    if (!isPasswordCorrect) return res.status(400).json({ message: "Wrong credentials" })
 
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "360h" })
 
@@ -40,7 +40,7 @@ const register = async (req, res) => {
 
     //const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } )
 
-    res.status(201).json({result})
+    res.status(201).json(result)
   } catch (error) {
     res.status(500).json({ message: "Something went wrong", content: error.message })
     
@@ -61,7 +61,7 @@ const forgotPassword = async (req, res) => {
       const payload = {id: user._id, email: user.email}
       const token = jwt.sign(payload, aSecret, {algorithm: "HS256", expiresIn: 30*60,})
       // console.log('TOKEN =', token)
-      const link = `http://localhost:${process.env.PORT}/api/auth/reset-password/${user._id}/${token}`
+      const link = `${process.env.RESET_PASSWORD_URL}/${user._id}/${token}`
 
       let mailContent = `Click on the following link to reset your password. The link is valid for only 30 minutes.\n
        ${link}`

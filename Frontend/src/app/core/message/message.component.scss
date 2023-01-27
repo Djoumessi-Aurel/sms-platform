@@ -1,0 +1,84 @@
+@import "../../../styles.scss";
+/*.message{
+    border: 1px solid $c-primary;
+    border-radius: 1em;
+    color: white;
+    background: linear-gradient(45deg, $c-secondary, $c-primary);
+    text-align: justify;
+    word-wrap:break-word;
+    
+}*/
+.chatbox {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 120px);
+  padding: 5px;
+  overflow: visible;
+}
+  .message {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-top: 5px;
+    
+  }
+  .details{
+    font-size: small; text-align: right; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .my_msg {
+    justify-content: flex-end;
+  }
+  .message p {
+    position: relative;
+    right: 0;
+    text-align: right;
+    font-family: 'Times New Roman';
+    padding: 12px;
+    margin-bottom: 0px !important;
+    background: #dcf8c8;
+    border-radius: 10px;
+    font-size: 0.98em;
+  
+
+  }
+  
+  .message p::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(
+      135deg,
+      #dcf8c6 0%,
+      #dcf8c6 50%,
+      transparent 50%,
+      transparent
+    );
+  }
+
+.friend_msg p {
+  background: #fff;
+  text-align: left;
+  margin-right: 390px;
+}
+.friend_msg {
+  justify-content: flex-start;
+}
+.message.friend_msg p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(
+    225deg,
+    #fff 0%,
+    #fff 50%,
+    transparent 50%,
+    transparent
+  );
+}
+  
