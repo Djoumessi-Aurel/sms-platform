@@ -71,7 +71,7 @@ const send = async (req, res)=>{
                 'Authorization': 'Basic ' + process.env.SMS_TOKEN
             }
         })
-        console.log('Résultat de la requête:', res.data)
+        // console.log('Result of the request:', res.data)
         finalReceivers.push(receiver)
 
         } catch (error) {
