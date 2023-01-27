@@ -1,6 +1,9 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=16.13.2"
+  },
   "description": "SMS Sending System",
   "main": "server.js",
   "scripts": {

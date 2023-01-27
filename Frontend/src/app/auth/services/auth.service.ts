@@ -7,7 +7,7 @@ export class AuthService {
     constructor(private router: Router){}
 
     currentUser:any = null
-    backendUrl: string = 'http://localhost:8080/api'
+    backendUrl: string = 'https://sms-platform-backend-production.up.railway.app/api'
     isAdmin:boolean = false;
     isAuth:boolean = false; //boolean for authentication state
     /*This is the service where authentication functons are defined */

@@ -18,7 +18,8 @@ const SMSRoute = require('./API/Routes/sms')
 const ContactRoute = require('./API/Routes/contact')
 
 // Connexion to the database
-const DBURL = process.env.DBURL || 'mongodb://localhost:27017/sms-platform'
+// const DBURL = process.env.DBURL || 'mongodb://localhost:27017/sms-platform'
+const DBURL = process.env.DBURL || 'mongodb+srv://user-aurel:amCgrWF32p0rTXts@cluster0.swo0hmy.mongodb.net/sms-platform?retryWrites=true&w=majority'
 mongoose.set('strictQuery', true)
 
 mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true})
