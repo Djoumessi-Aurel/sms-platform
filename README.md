@@ -1,4 +1,4 @@
-# SMS Sending System
+# SMS Sending System. By groups 3 & 7 of 4GI ENSPY
 
 Web application for sending SMS
 
