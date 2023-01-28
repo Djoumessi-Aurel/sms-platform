@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 
 @Component({
@@ -11,11 +12,21 @@ export class NavIndexComponent implements OnInit {
 
   isAuth: boolean = false
   currentUser: any
+  isAuthSubscription = new Subscription()
+  currentUserSubscription = new Subscription()
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.isAuth = this.authService.isAuth
-    this.currentUser = this.authService.currentUser
+    this.isAuthSubscription = this.authService.isAuthSubject.subscribe(
+      (isAuth: boolean) => { this.isAuth = isAuth }
+    )
+
+    this.currentUserSubscription = this.authService.currentUserSubject.subscribe(
+      (currentUser) => { this.currentUser = currentUser }
+    )
+
+    this.authService.emitUserInfos()
   }
 
   onSignOut(): void {

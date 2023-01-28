@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 
 @Component({
@@ -9,10 +10,16 @@ import { AuthService } from '../auth/services/auth.service';
 export class IndexComponent implements OnInit {
 
   isAuth: boolean = false
+  isAuthSubscription = new Subscription
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.isAuth = this.authService.isAuth
+    this.isAuthSubscription = this.authService.isAuthSubject.subscribe(
+      (isAuth: boolean) => { this.isAuth = isAuth }
+    )
+    
+    this.authService.emitUserInfos()
   }
 
 }

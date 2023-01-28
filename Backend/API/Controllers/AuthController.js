@@ -35,7 +35,7 @@ const loginWithToken = async (req, res) => {
     let user = await User.findById(payload.id)
     if (!user) return res.status(401).json({ message: "User does not exist" })
     
-    res.status(201).json({ result: user, token })
+    res.status(201).json(user)
 
   } catch (err) {
     res.status(500).json({ message: "Something went wrong", content: err.message })
