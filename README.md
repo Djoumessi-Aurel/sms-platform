@@ -1,4 +1,4 @@
-# SMS Sending System
+# SMS Sending System, by groups 3 & 7, 4GI
 
 Web application for sending SMS
 
