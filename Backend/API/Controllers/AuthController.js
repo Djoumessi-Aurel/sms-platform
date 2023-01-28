@@ -25,6 +25,23 @@ const login = async (req, res) => {
   }
 }
 
+// login with token
+const loginWithToken = async (req, res) => {
+
+  try {
+    const { token } = req.body
+    const payload = jwt.verify(token, secret)
+
+    let user = await User.findById(payload.id)
+    if (!user) return res.status(401).json({ message: "User does not exist" })
+    
+    res.status(201).json({ result: user, token })
+
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong", content: err.message })
+  }
+}
+
 // create an account
 const register = async (req, res) => {
   const { name, email, phone, password } = req.body
@@ -136,4 +153,4 @@ async function sendMail(receiver, content){
 }
 
 
-module.exports = {login, register, forgotPassword, beforeResetPassword, resetPassword}
+module.exports = {login, loginWithToken, register, forgotPassword, beforeResetPassword, resetPassword}
