@@ -71,7 +71,7 @@ export class AuthService {
         return new Promise( //asynchronous function
             (resolve, reject) => {
 
-                if(!this.localService.getData(this.TOKEN_KEY)){ reject('User not signed in.'); this.localService.clearData(); }
+                if(!this.localService.getData(this.TOKEN_KEY)){ reject('User not signed in.'); this.localService.removeData(this.TOKEN_KEY); }
 
                 axios.post(this.backendUrl + '/auth/login-with-token', {token: this.localService.getData(this.TOKEN_KEY)})
                 .then((response)=>{
@@ -131,7 +131,7 @@ export class AuthService {
     }
 
     signOut() {
-        this.localService.clearData() //clearing the local storage
+        this.localService.removeData(this.TOKEN_KEY) //removing the token from the local storage
         this.isAuth = false; this.currentUser = null
         this.emitUserInfos()
     }
