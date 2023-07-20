@@ -1,6 +1,7 @@
-# SMS Sending System, by groups 3 & 7, 4GI
+# SMS Sending System
 
-Web application for sending SMS
+Web application for sending SMS (Whatsapp messages in the current version)
+Available at : https://djoumessi-aurel.github.io/sms-platform/
 
 # Features
 
