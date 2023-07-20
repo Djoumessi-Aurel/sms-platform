@@ -1,6 +1,7 @@
-# SMS Sending System. By groups 3 & 7 of 4GI ENSPY
+# SMS Sending System
 
-Web application for sending SMS
+Web application for sending SMS (Whatsapp messages in the current version)
+Available at : https://djoumessi-aurel.github.io/sms-platform/
 
 # Features
 
