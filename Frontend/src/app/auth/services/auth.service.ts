@@ -7,7 +7,7 @@ import { LocalService } from './local.service';
 export class AuthService {
 
     currentUser:any = null
-    backendUrl: string = 'https://sms-platform-backend.onrender.com/api'
+    backendUrl: string = 'http://localhost:8080/api'
     // backendUrl: string = 'https://sms-platform-backend-production.up.railway.app/api'
     isAdmin:boolean = false;
     private isAuth:boolean = false; //boolean for authentication state

@@ -70,6 +70,7 @@ export class SignupComponent implements OnInit {
   }
   ngOnInit(): void {
     if(this.authService.getIsAuth()) this.router.navigate(['/core']);
+    else this.authService.signInWithToken().then(() => this.router.navigate(['/core']))
     
     this.initForm();
   }
