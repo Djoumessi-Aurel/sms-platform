@@ -17,7 +17,7 @@ export class AuthService {
 
     constructor(private localService: LocalService){
         this.signInWithToken().then((response)=>{
-            this.emitUserInfos()
+            // this.emitUserInfos() //Already done in signInWithToken method
             // console.log(response)
         })
         .catch((error)=>{console.log(error)})
