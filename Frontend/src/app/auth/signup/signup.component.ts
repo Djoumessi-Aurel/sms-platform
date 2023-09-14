@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   signupForm : FormGroup = this.fb.group({ });
   signupMessage: string = '';
+  waitingMessage: string = 'Processing... Please wait.';
+  isSending: boolean = false;
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router:Router) { 
@@ -33,6 +36,9 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     if(this.signupForm.invalid) {console.log('Formulaire invalide'); return;}
 
+    this.signupMessage = ''
+    this.isSending = true
+
     let name = this.signupForm.get('name')!.value;
     let email = this.signupForm.get('email')!.value;
     let password = this.signupForm.get('password')!.value;
@@ -43,6 +49,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/auth/signin']);
         },
       (error) => {
+        this.isSending = false
         this.signupMessage = error.data.message;
         // this.router.navigate(['/auth/signup']);
        }

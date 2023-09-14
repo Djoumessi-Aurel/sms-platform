@@ -15,6 +15,7 @@ export class ResetPasswordComponent implements OnInit {
   email: string = ''
   resetPasswordForm : FormGroup = this.fb.group({ });
   resetPasswordMessage: string = '';
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router:Router, private route: ActivatedRoute) { 
@@ -28,6 +29,7 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit(): void {
     if(this.resetPasswordForm.invalid) {console.log('Formulaire invalide'); return;}
 
+    this.resetPasswordMessage = 'Processing... Please wait.'
     let password = this.resetPasswordForm.get('password')!.value;
 
     this.authService.resetPassword(this.id, this.token, password).then(

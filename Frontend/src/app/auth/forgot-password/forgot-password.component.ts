@@ -32,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
     onSubmit(): void {
       if(this.forgotPasswordForm.invalid) {console.log('Formulaire invalide'); return;}
-      this.errorMessage = 'Envoi en cours. Patientez svp.'
+      this.errorMessage = 'Processing... Please wait.'
 
       let email = this.forgotPasswordForm.get('email')!.value;
       this.authService.backupPassword(email).then(

@@ -19,10 +19,11 @@ module.exports.checkUser = (req, res, next) => {
 		  decodedData = jwt.decode(token)
 	
 		  req.userId = decodedData?.sub
-		}    
-	
+		}
+
 		next()
 	  } catch (error) {
 		console.log(error.name, error.message)
+		res.status(401).json({message: 'Unknown route.'})
 	  }
 }

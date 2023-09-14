@@ -44,6 +44,13 @@
     text-align: center;
 }
 
+.waitingMessage{
+    background-color: rgba(222, 225, 222, 0.621);
+    text-align: center;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 6px;
+}
+
 a{
     color: $c-primary;
 }

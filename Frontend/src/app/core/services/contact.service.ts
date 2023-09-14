@@ -24,7 +24,8 @@ export class ContactService {
   refreshContacts() {
     
     return new Promise((resolve, reject)=>{
-      axios.get(this.authService.backendUrl + '/contact/' + this.authService.currentUser.email)
+      axios.get(this.authService.backendUrl + '/contact/' + this.authService.currentUser.email,
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{//console.log('Getting contacts: OK')
                     this.contacts = response.data.docs
                     this.emitContacts()
@@ -39,7 +40,8 @@ export class ContactService {
   addContact(name:string, phone:string) {
     
     return new Promise((resolve, reject)=>{
-      axios.post(this.authService.backendUrl + '/contact/create', {name, phone, ownerId: this.authService.currentUser._id})
+      axios.post(this.authService.backendUrl + '/contact/create', {name, phone, ownerId: this.authService.currentUser._id},
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
                     this.contacts.push(response.data.content)
                     this.emitContacts()
@@ -55,7 +57,8 @@ export class ContactService {
   addManyContacts(contactsArray: any[]) {
     
     return new Promise((resolve, reject)=>{
-      axios.post(this.authService.backendUrl + '/contact/createMany', {contactsArray})
+      axios.post(this.authService.backendUrl + '/contact/createMany', {contactsArray},
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
                     this.refreshContacts();
                     resolve('Importing contacts: OK')
@@ -69,7 +72,8 @@ export class ContactService {
   deleteContact(id: string){
     
     return new Promise((resolve, reject)=>{
-      axios.delete(this.authService.backendUrl + `/contact/delete/${id}`)
+      axios.delete(this.authService.backendUrl + `/contact/delete/${id}`,
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
                     this.refreshContacts();
                     resolve('Deleting a contact: OK')
@@ -83,7 +87,8 @@ export class ContactService {
   updateContact(id: string, name:string, phone:string){
     
     return new Promise((resolve, reject)=>{
-      axios.put(this.authService.backendUrl + '/contact/update', {name, phone, contactId: id})
+      axios.put(this.authService.backendUrl + '/contact/update', {name, phone, contactId: id},
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
                     this.refreshContacts();
                     resolve('Updating a contact: OK')

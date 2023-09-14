@@ -18,7 +18,8 @@ export class ConversationService {
   refreshMessages() {
     
     return new Promise((resolve, reject)=>{
-      axios.get(this.authService.backendUrl + '/sms/getSent/' + this.authService.currentUser.email)
+      axios.get(this.authService.backendUrl + '/sms/getSent/' + this.authService.currentUser.email,
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{//console.log('Getting contacts: OK')
                     this.sentMessages = response.data.docs
                     this.emitMessages()
@@ -33,7 +34,8 @@ export class ConversationService {
 
   sendMessage(content: string, receivers: string[]) {
     return new Promise((resolve, reject)=>{
-      axios.post(this.authService.backendUrl + '/sms/send', {content, sender: this.authService.currentUser._id, receivers})
+      axios.post(this.authService.backendUrl + '/sms/send', {content, sender: this.authService.currentUser._id, receivers},
+      {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{//console.log(response.data.content)
                     this.sentMessages.push(response.data.content)
                     this.emitMessages()

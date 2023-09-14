@@ -15,6 +15,9 @@ export class SigninComponent implements OnInit {
   submitted = false;
   signinMessage: string = '';
   authMessage: string = '';
+  waitingMessage: string = 'Processing... Please wait.';
+  isSending: boolean = false;
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router:Router,
@@ -33,12 +36,16 @@ export class SigninComponent implements OnInit {
     
     if(this.signinForm.invalid){ console.log('Formulaire invalide'); return;}
 
+    this.signinMessage = '';
+    this.isSending = true;
+    
     this.authService.signInUser(email,password).then(
       
       (response) => {
         this.router.navigate(['/core']);
       },
       (error) => {
+        this.isSending = false;
         this.signinMessage = error.data.message;
         //this.router.navigate(['/auth/signup']);
       }

@@ -53,8 +53,8 @@ const getReceived = async (req, res)=>{
     }
 }
 
-// send a SMS
-const send = async (req, res)=>{
+// send a SMS (Now it is Whatsapp message instead)
+const send_sms = async (req, res)=>{
     try {
     let {content, sender, receivers} = req.body
 	receivers = [...new Set(receivers)]; //eliminate duplicates in the receiver list
@@ -89,5 +89,22 @@ const send = async (req, res)=>{
     }
 }
 
+// send a message (Just save it in the database)
+const send = async (req, res)=>{
+    try {
+    let {content, sender, receivers} = req.body
+	receivers = [...new Set(receivers)]; //eliminate duplicates in the receiver list
+	
+    let user = await User.findById(sender)
+    if(!user) throw new Error(`User ${sender} does not exist`)
+    
+    let response = await SMS.create({content, sender, receivers: receivers})
+    res.status(200).json({message: 'Message successfully sent', content: response})
 
-module.exports = {getAll, getSent, getReceived, send}
+    } catch (error) {
+    res.status(401).json({message: 'An error occured.', content: error.message})
+    }
+}
+
+
+module.exports = {getAll, getSent, getReceived, send, send_sms}

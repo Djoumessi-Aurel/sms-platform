@@ -4,6 +4,10 @@
             <div class="col-lg-4 col p-4 m-sm-5 form shadow-lg" >
                 <div class="text-center"><img src="../../../assets/images/looo.png" id="logo" alt="Logo du site" /><p>LE NJOH</p></div>
                 <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+                    <div class="waitingMessage"
+                    *ngIf="isSending">
+                        <p>{{waitingMessage}}</p>
+                    </div>
                     <div class="signinMessage alert-danger"
                     *ngIf="signinMessage != '' ">
                         <p>{{signinMessage}}</p>
@@ -43,7 +47,7 @@
                     <div class="text-center">
                         <button type="submit" 
                         class="btn btn--outline-primary"
-                        [ngClass]="{'btn--disabled':signinForm.invalid}"
+                        [ngClass]="{'btn--disabled':signinForm.invalid || isSending}"
                         >Sign in</button>
                     </div>
                     <div class="text-center mt-2">
