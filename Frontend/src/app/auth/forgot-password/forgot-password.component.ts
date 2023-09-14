@@ -32,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
     onSubmit(): void {
       if(this.forgotPasswordForm.invalid) {console.log('Formulaire invalide'); return;}
-      this.errorMessage = 'Processing... Please wait.'
+      this.errorMessage = 'Sending in progress. Please wait.'
 
       let email = this.forgotPasswordForm.get('email')!.value;
       this.authService.backupPassword(email).then(
@@ -44,6 +44,9 @@ export class ForgotPasswordComponent implements OnInit {
       
     }
     ngOnInit(): void {
+      if(this.authService.getIsAuth()) this.router.navigate(['/core']);
+      else this.authService.signInWithToken().then(() => this.router.navigate(['/core']))
+
       this.initForm();
     }
 
