@@ -21,7 +21,7 @@ const login = async (req, res) => {
 
     res.status(200).json({ result: oldUser, token })
   } catch (err) {
-    res.status(500).json({ message: "Something went wrong", content: err.message })
+    res.status(401).json({ message: "Something went wrong", content: err.message })
   }
 }
 
@@ -38,7 +38,7 @@ const loginWithToken = async (req, res) => {
     res.status(201).json(user)
 
   } catch (err) {
-    res.status(500).json({ message: "Something went wrong", content: err.message })
+    res.status(401).json({ message: "Something went wrong", content: err.message })
   }
 }
 
@@ -59,7 +59,7 @@ const register = async (req, res) => {
 
     res.status(201).json(result)
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong", content: error.message })
+    res.status(401).json({ message: "Something went wrong", content: error.message })
     
     // console.log(error)
   }
@@ -87,9 +87,8 @@ const forgotPassword = async (req, res) => {
   
       res.status(201).json({message: `A link has been sent to your email adress ${user.email}
       \ncheck it to reset your password.`})
-    } catch (error) {
-      res.status(500).json({ message: "Something went wrong", content: error.message })
-    //   console.log(error)
+    } catch (error) {//console.log(error)
+      res.status(401).json({ message: "Something went wrong", content: error.message })
     }
   }
 
