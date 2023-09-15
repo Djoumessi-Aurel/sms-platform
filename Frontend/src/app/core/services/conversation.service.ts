@@ -11,6 +11,11 @@ export class ConversationService {
   sentMessagesSubject = new Subject<any[]>();
   private sentMessages: any[] = []; //List of the current user sent messages
 
+  constructor(private authService: AuthService) { 
+    this.refreshMessages().then((response) => console.log(response))
+                          .catch((error) => console.log(error))
+  }
+
   emitMessages() {
     this.sentMessagesSubject.next(this.sentMessages.slice());
   }
@@ -47,7 +52,4 @@ export class ConversationService {
     })
   }
 
-  constructor(private authService: AuthService) { 
-    
-  }
 }

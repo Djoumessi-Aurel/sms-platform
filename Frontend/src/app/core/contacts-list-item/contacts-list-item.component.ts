@@ -15,7 +15,6 @@ export class ContactsListItemComponent implements OnInit {
   constructor(private contactService:ContactService, private convService: ConversationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.convService.refreshMessages() //So that when we click to write to a contacts, the messages are already there.
   }
 
   delete(event:any){

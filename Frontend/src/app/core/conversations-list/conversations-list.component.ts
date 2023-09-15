@@ -73,7 +73,7 @@ export class ConversationsListComponent implements OnInit {
       (messages:any[]) => { this.sentMessages = messages;  }
     );
 
-    this.convService.refreshMessages()//.then((response)=>{console.log(response)})
+    this.convService.emitMessages()//.then((response)=>{console.log(response)})
 
     this.contactSubscription = this.contactService.contactSubject.subscribe(
       (contacts:Contact[]) => { this.contacts = contacts; }
