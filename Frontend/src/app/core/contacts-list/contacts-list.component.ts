@@ -42,7 +42,7 @@ export class ContactsListComponent implements OnInit {
       (contacts:Contact[]) => { this.contacts = contacts;  }
     );
     
-    this.contactService.refreshContacts()
+    this.contactService.emitContacts()
 
   }
 

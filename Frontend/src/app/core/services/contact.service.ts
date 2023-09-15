@@ -11,7 +11,10 @@ export class ContactService {
   contactSubject = new Subject<Contact[]>();
   private contacts: Contact[] = [];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+    this.refreshContacts().then((response) => console.log(response))
+                          .catch((error) => console.log(error))
+  }
 
   emitContacts() {
     this.contactSubject.next(this.contacts.slice());
@@ -51,7 +54,6 @@ export class ContactService {
                     reject(error.response)
                 })
     })
-    //this.refreshContacts()
   }
 
   addManyContacts(contactsArray: any[]) {
@@ -60,7 +62,8 @@ export class ContactService {
       axios.post(this.authService.backendUrl + '/contact/createMany', {contactsArray},
       {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
-                    this.refreshContacts();
+                    this.contacts.push(...response.data.content)
+                    this.emitContacts()
                     resolve('Importing contacts: OK')
                 })
                 .catch((error)=>{
@@ -75,7 +78,8 @@ export class ContactService {
       axios.delete(this.authService.backendUrl + `/contact/delete/${id}`,
       {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
-                    this.refreshContacts();
+                    this.contacts = this.contacts.filter((value) => value._id !== id)
+                    this.emitContacts()
                     resolve('Deleting a contact: OK')
                 })
                 .catch((error)=>{
@@ -90,8 +94,10 @@ export class ContactService {
       axios.put(this.authService.backendUrl + '/contact/update', {name, phone, contactId: id},
       {headers: {'Authorization': 'Basic ' + this.authService.currentUser.token}})
                 .then((response)=>{
-                    this.refreshContacts();
-                    resolve('Updating a contact: OK')
+                  let index = this.contacts.findIndex((value) => value._id === id)
+                  this.contacts[index] = response.data.content
+                  this.emitContacts()
+                  resolve('Updating a contact: OK')
                 })
                 .catch((error)=>{
                     reject(error.response)
