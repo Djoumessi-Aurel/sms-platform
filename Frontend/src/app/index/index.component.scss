@@ -19,16 +19,20 @@
     padding-left: 60px;
     margin-top: 0px;
     height: 500px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Garamond', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
     p{
-        font-size: large;
+        font-size: larger;
         // width: 40%;
+    }
+    .jumbo-title{
+        font-weight: bold;
     }
 }
 .bg-transparent{
     .jumbo-title{
         color: white;
-        
+        font-weight: bold;
     }
 }
 

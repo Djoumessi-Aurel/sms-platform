@@ -197,7 +197,7 @@ $radiusBtnLg: 0.5em;
 
 }
 body{
-    font-family: 'calibri','trebuchet ms', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+    font-family: 'Helvetica', 'Times','calibri','trebuchet ms', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
 }
 a{
     &.primary{
@@ -234,4 +234,16 @@ a{
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+div.main-container{
+    min-height: 100vh;
+}
+footer{
+    background-color: #f7f7f7;
+    padding: 20px 0px;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    font-style: italic;
+}
