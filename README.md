@@ -1,7 +1,7 @@
 # SMS Sending System
 
 Web application for sending SMS (Whatsapp messages in the current version)
-Available at : https://djoumessi-aurel.github.io/sms-platform/
+Available at : https://sms-platform-igea.vercel.app/
 
 # Features
 
