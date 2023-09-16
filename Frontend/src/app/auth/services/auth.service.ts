@@ -7,13 +7,13 @@ import { LocalService } from './local.service';
 export class AuthService {
 
     currentUser:any = null
-    backendUrl: string = 'http://localhost:8080/api'
+    backendUrl: string = 'https://sms-platform-backend.onrender.com/api'
     
     isAdmin:boolean = false;
     private isAuth:boolean = false; //boolean for authentication state
     isAuthSubject = new Subject<boolean>();
     currentUserSubject = new Subject<any>();
-    TOKEN_KEY: string = 'key-sms-platform-key-local'
+    TOKEN_KEY: string = 'key-sms-platform-key-online'
 
     constructor(private localService: LocalService){
         this.signInWithToken().then((response)=>{
